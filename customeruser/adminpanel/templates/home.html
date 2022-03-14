@@ -1,0 +1,158 @@
+{% extends "adminbases.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  
+
+
+<div class="row justify-content-center pt-5">
+    <div class="col-md-8">
+    <form method="get" action="{% url 'adminhome' %}">
+  
+        <input autocomplete="off" name='q' id="search-input" type="search" id="form1" class="text-center form-control "/>
+     
+      <div class="row justify-content-center p-2">
+         </button>
+      </div>
+    </form>
+    </div>
+  
+</div>
+<!-- this is for alert settings  -->
+
+
+<div id="alert" class="alert_success not_visible">
+  <h4 id="success_h4"></h4>
+</div>
+    <div class="row">
+      <div class="col-md-4  align-itm">
+          <div class="admin_div" style="background-color: rgba(0, 0, 0, 0.5);">
+          
+              <div class="admin_inner" role="alert">
+
+                <div><h5>Total Users</h5></div>
+                <div><h5>{{user_count}}</h5></div>
+              
+              
+              
+              </div>
+          
+          </div>
+          <div class="admin_div" style="background-color: rgba(0, 0, 0, 0.5);">
+          
+            <div class="admin_inner" role="alert">
+            
+              <h5>Deactive users </h5>
+              <h5>{{deactive_count}}</h5>
+            
+            </div>
+        
+        </div>
+        <div class="admin_div" style="background-color: rgba(0, 0, 0, 0.5);">
+          
+          <div class="admin_inner" role="alert">
+
+            <h5>Active users </h5>
+            <h5>{{active_count}} </h5>
+          
+          
+          </div>
+      
+      </div>
+       
+      </div>
+
+      <div class="col-md-8 ">
+
+          <!-- user details -->
+          {% for user in users %}
+          <div class="user_div" style="background-color: rgba(0, 0, 0, 0.226);">
+         
+            <div class="user_inner" role="alert">
+              <a href="" id="user-{{user.id}}">{{user.username|upper|slice:":7"}}</a>
+            </div>
+            <div >
+              <button id="btnview" class="btnviws" value="{{user.id}}" data-toggle="modal" data-target="#exampleModal"><i class="ri-eye-fill"></i></button>
+              <button id="btnedit" class="editbtncls" value="{{user.id}}" data-toggle="modal" data-target="#update-form-modal"><i class="ri-edit-2-fill"></i></button>
+              <button id="btnactive" class="active_inactive" value="{{user.id}}"> 
+              {% if user.is_active %}
+                <b><i  id="active-star-{{user.id}}" class="green ri-star-line"></i></b>
+
+                {% else %}
+                <b><i  id="active-star-{{user.id}}" class="red ri-star-line"></i></b>
+              {% endif %}</button>
+              
+            </div>
+
+            <!-- user details modal -->
+
+            <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog " role="document">
+                <div class="modal-content " style="background-color: rgba(8, 8, 8, 0.719);" >
+                  <div class="modal-header text-center">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">User Details</h5>
+                   
+                  
+                  </div>
+                 
+                  <div class="modal-body text-center">
+                    <h1 style="color: white;" id="modalh1"></h1>
+                    <hr>
+                    <h1 style="color: white;" id="modalh12"></h1>
+                  </div>
+                  <div class="modal-footer">
+                    <button style="color:whitesmoke;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                   
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- end details modal -->
+
+            <!-- user update modal -->
+            <!-- Modal -->
+                      <div class="modal fade" id="update-form-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content" style="background-color: rgba(8, 8, 8, 0.719);" >
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form id="update_form">
+                                {% csrf_token %}
+                                <input type="text" name="username" maxlength="150" class="textinput textInput form-control" style="color: black;" id="id_user" hidden>
+                                {{formsaadmin|crispy}}
+                             
+                              
+                            </div>
+
+                            <div class="row justify-content-center">
+                           
+                              <button type="button w-25" class="btn btn-dark">update</button>
+                            </div>
+                    
+                          </form>
+                          </div>
+                        </div>
+                      </div>
+            <!-- end user update modal -->
+            
+            
+           
+          </div>
+          {% endfor %}
+     
+        <!-- end user detils -->
+   
+
+      </div>
+    </div>
+
+    {% endblock content %}

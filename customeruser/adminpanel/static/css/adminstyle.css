@@ -1,0 +1,136 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-image: url('https://cdn.pixabay.com/photo/2015/08/04/09/00/backdrop-874452_960_720.jpg');
+    position: relative;
+}
+h1{
+    font-size: 45px;
+    color: rgb(60, 255, 0);
+}
+#search-input{
+    background-color: rgba(0, 0, 0, 0.281);
+    color: whitesmoke;
+}
+.btn{
+    border: none;
+    color: rgb(243, 235, 235);
+    font-size: 24px;
+
+}
+.btn:hover{
+    color: red;
+}
+.user_div{
+
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    padding: 10px;
+    margin-top: 10px;
+    color: whitesmoke;
+
+}
+
+.admin_div{
+
+
+    height: 50px;
+    align-items: center;
+    padding: 10px;
+    margin-top: 20px;
+    color: whitesmoke;
+
+}
+
+#btn{
+    border: none;
+    background: transparent;
+    color: whitesmoke;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: none;
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+
+.admin_inner{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.user_inner{
+    margin-left: 20px;
+}
+
+
+.btnviws{
+    background-color: transparent;
+    border: none;
+    outline : none;
+    -moz-outline : none;
+    color: white;
+}
+
+.editbtncls{
+    background-color: transparent;
+    border: none;
+    outline : none;
+    -moz-outline : none;
+    color: white;
+}
+#id_username,#id_email{
+    background-color: rgba(0, 0, 0, 0.479);
+    color: white;
+}
+
+.alert_success {
+    position: absolute;
+    bottom: 50%;
+    left: 80%;
+    background-color: rgba(0, 0, 0, 0.685);
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    width: 250px;
+    height: 100px;
+    z-index: 1;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    
+}
+#btnactive{
+    font-size: 20px;
+    background: transparent;
+    border: none;
+}
+
+.not_visible{
+    display: none;
+}
+.green{
+    color: rgb(7, 245, 7);
+}
+.red{
+    color: red;
+}
+
+
+
